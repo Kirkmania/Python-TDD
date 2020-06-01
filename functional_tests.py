@@ -1,32 +1,42 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Firefox()
+class NewVisitorTest(unittest.TestCase):
 
-# George has started along the Way of the Testing Goat and
-# pretends to check out a new to-do list website
-browser.get('http://localhost:8000')
+    def setUp(self):
+        self.browser = webdriver.Firefox()
 
-# He notices the page title and header mentions to-do lists
-assert 'To-Do' in browser.title, "Browser title was " + browser.title
+    def tearDown(self):
+        self.browser.quit()
+    
+    def test_can_start_a_list_and_retrieve_it_later(self):
+        # George has started along the Way of the Testing Goat and
+        # pretends to check out a new to-do list website
+        self.browser.get('http://localhost:8000')
 
-# He is invited to enter a to-do item pronto
+        # He notices the page title and header mentions to-do lists
+        self.assertIn('To-Do', self.browser.title)
+        self.fail('finish the test!')
 
-# He types "Play more Call of Duty" into a text box
+        # He is invited to enter a to-do item pronto
 
-# When he hits enter, the page updates, and now the page lists
-# "1: Play more Call of Duty" as an item in a to-do list
+        # He types "Play more Call of Duty" into a text box
 
-# There is still a text box inviting him to to add another item.
-# He enters "Make the blog look prettier"
+        # When he hits enter, the page updates, and now the page lists
+        # "1: Play more Call of Duty" as an item in a to-do list
 
-# The page updates again, and now shows both items on her list
+        # There is still a text box inviting him to to add another item.
+        # He enters "Make the blog look prettier"
 
-# George wonders whether the site will remember his list. Then he sees
-# that the site has generated a unique URL for him, with some explanatory
-# text to that effect.
+        # The page updates again, and now shows both items on her list
 
-# He visits that URL, his to-do list is still there.
+        # George wonders whether the site will remember his list. Then he sees
+        # that the site has generated a unique URL for him, with some explanatory
+        # text to that effect.
 
-# Satisfied, he goes back to sleep.
+        # He visits that URL, his to-do list is still there.
 
-browser.quit()
+        # Satisfied, he goes back to sleep.
+
+if __name__ == '__main__':
+    unittest.main()             # NOTE: tutorial has warnings='ignore' arg, perhaps not needed?
