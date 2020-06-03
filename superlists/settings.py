@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+# Gotta manually add your new app!
+# https://www.obeythetestinggoat.com/book/chapter_philosophy_and_refactoring.html
+    'lists',
 ]
 
 MIDDLEWARE = [
